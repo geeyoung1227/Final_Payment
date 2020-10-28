@@ -15,22 +15,17 @@ public class Payment {
     private Long requestId;
     private String status;
 
-
     @PostPersist
     public void onPostPersist(){
         Paid paid = new Paid();
         BeanUtils.copyProperties(this, paid);
         paid.publishAfterCommit();
 
-        try {
+        /*try {
             Thread.sleep((long) (400 + Math.random() * 300));
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-
-
-
-
+        }*/
     }
 
     @PostUpdate

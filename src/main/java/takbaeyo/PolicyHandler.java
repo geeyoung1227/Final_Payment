@@ -25,8 +25,6 @@ public class PolicyHandler{
     public void wheneverReqCanceled_PaymentCancelPol(@Payload ReqCanceled reqCanceled){
 
         if(reqCanceled.isMe()){
-            //LJK
-
             Iterator<Payment> iterator = paymentRepository.findAll().iterator();
             while(iterator.hasNext()){
                 Payment paymenttmp = iterator.next();
@@ -37,9 +35,6 @@ public class PolicyHandler{
                     paymentRepository.save(payment);
                 }
             }
-
-            //LJK
-
             System.out.println("##### listener PaymentCancelPol : " + reqCanceled.toJson());
         }
     }
